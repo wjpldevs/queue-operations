@@ -1,15 +1,15 @@
 import sys
-from linear_queue import Queue
+from circular_queue import CircularQueue
 
 # Project title
-print("Queues with names \n")
+print("Queues with names: \n")
 
 # Entry data: Input size
 sizeQueue = int(input("Size of queue: "))
 
 # Object creation
 namesQueue = [""] * sizeQueue  # Creating an empty static-size queue
-queue = Queue()
+queue = CircularQueue()
 amountNames = 0
 running = True
 
