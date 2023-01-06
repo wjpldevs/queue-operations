@@ -66,11 +66,11 @@ while running:
             queue.show(namesQueue)
 
     elif option == 3:  # Show the start of the queue
-        start = queue.get_start() + 1
+        start = queue.get_start()
         print(f"The start of the queue is: {start + 1}")
 
     elif option == 4:  # Show the end of the queue
-        end = queue.get_end() + 1
+        end = queue.get_end()
         print(f"The end of the queue is: {end + 1}")
 
     elif option == 5:  # Show is empty
