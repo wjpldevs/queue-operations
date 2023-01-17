@@ -1,16 +1,17 @@
 import sys
 from linear_queue import Queue
+from customer import Customer
 
 # Project title
-print("Queues with names \n")
+print("Queues with customers \n")
 
 # Entry data: Input size
 sizeQueue = int(input("Size of queue: "))
 
 # Object creation
-namesQueue = [""] * sizeQueue  # Creating an empty static-size queue
+customers = [Customer()] * sizeQueue  # Creating an empty static-size queue
 queue = Queue()
-amountNames = 0
+amountCustomers = 0
 running = True
 
 while running:
@@ -31,39 +32,44 @@ while running:
 
     # Define operations
     if option == 1:
-        # Get amount of name to add
-        amountNames = int(input("How many names you need to add?: "))
+        # Get amount of customers to add
+        amountCustomers = int(input("How many customers you need to add?: "))
         # Validation 1
-        if amountNames > len(namesQueue):
-            print("Impossible to add more names!")
+        if amountCustomers > len(customers):
+            print("Impossible to add more customers!")
         # Validation 2
-        if amountNames <= 0:
+        if amountCustomers <= 0:
             print("Amount not valid!")
         else:
-            for i in range(amountNames):
-                elem = input(f"Name: # {i + 1}: ")
-                queue.add(elem, namesQueue)
+            for i in range(amountCustomers):
+                # Creating customer object
+                customerName = input(f"Customer Name: # {i + 1}: ")
+                customerEmail = input(f"Cusomter Email: # {i + 1}: ")
+                customerAccount = float(input(f"Customer Account: # {i + 1}: "))
+                customerObject = Customer(customerName, customerEmail, customerAccount)
+
+                queue.add(customerObject, customers)
 
             print("\n")
 
-            queue.show(namesQueue)
+            queue.show(customers)
 
     elif option == 2:
-        # Get amount of names to delete
-        amountNames = int(input("How many names you need to delete?: "))
+        # Get amount of customers to delete
+        amountCustomers = int(input("How many customers you need to delete?: "))
         # Validation 1
-        if amountNames > len(namesQueue):
-            print("Impossible to add more names!")
+        if amountCustomers > len(customers):
+            print("Impossible to add more customers!")
         # Validation 2
-        if amountNames <= 0:
+        if amountCustomers <= 0:
             print("There is an error!")
         else:
-            for i in range(amountNames):
-                queue.delete(namesQueue)
+            for i in range(amountCustomers):
+                queue.delete(customers)
 
             print("\n")
 
-            queue.show(namesQueue)
+            queue.show(customers)
 
     elif option == 3:  # Show the start of the queue
         start = queue.get_start()
@@ -74,13 +80,13 @@ while running:
         print(f"The end of the queue is: {end + 1}")
 
     elif option == 5:  # Show is empty
-        if queue.is_empty(namesQueue):
+        if queue.is_empty(customers):
             print("Queue is empty!")
         else:
             print("Queue contains some items or is fully.")
 
     elif option == 6:  # Show is full
-        if queue.is_full(namesQueue):
+        if queue.is_full(customers):
             print("Queue is full!")
         else:
             print("Queue contains some items or is empty.")
